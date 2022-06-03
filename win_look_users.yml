@@ -1,0 +1,8 @@
+---
+- hosts: all 
+  tasks:
+   - name: Get disk facts
+     win_command: net user admin /domain| findstr "Last"
+     register: usage
+
+   - debug: msg="{{ usage.stdout }}"
