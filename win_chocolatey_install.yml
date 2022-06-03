@@ -9,12 +9,15 @@
       - name: python
         version: 3.6.0
   tasks:
-
-  - name: Install specific versions of packages sequentially
+  - name: Install nodejs versions of package
     chocolatey.chocolatey.win_chocolatey:
-      name: ""
-      version: ""
-    loop: ""
+      name: "nodejs"
+      version: "13.0.0"
+
+  - name: Install Python 3.6.0 versions of package
+    chocolatey.chocolatey.win_chocolatey:
+      name: "python"
+      version: "3.6.0"
 
   - name: Check python version
     ansible.windows.win_command: python --version
