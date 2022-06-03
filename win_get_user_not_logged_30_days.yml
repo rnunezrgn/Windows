@@ -1,0 +1,23 @@
+---
+- name: Report Users NOT logged on in the last 10 days with win_powershell module
+  hosts: all
+  gather_facts: True
+  vars:
+    mysource: ''
+    package_name: ''
+
+  tasks:
+    - name: Powershel hello world
+      ansible.windows.win_powershell:
+        script: |
+          echo "Hello World"
+
+    - name: Get-LocalUsers NOT logged on in 10 days
+      ansible.windows.win_powershell:
+        script: |
+          Get-UserLastLogon 
+
+    - name: Get-LocalUsers NOT logged on in 10 days
+      ansible.windows.win_powershell:
+        script: |
+          Get-LocalUser | Where-Object {$_.Lastlogon -ge (Get-Date).AddDays(-10)} | Select-Object Name,Enabled,SID,Lastlogon | Format-List

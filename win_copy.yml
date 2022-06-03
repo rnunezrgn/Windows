@@ -1,0 +1,11 @@
+---
+- name: Report Users NOT logged on in the last 10 days with win_powershell module
+  hosts: all
+  gather_facts: True
+
+  tasks:
+  - name: Copy File
+    win_copy:
+      src: C:\output.pdf
+      dest: C:\ansible_examples\
+      remote_src: yes
