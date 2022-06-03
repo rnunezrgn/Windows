@@ -22,3 +22,11 @@
       register: userlastlogon10
 
     - debug: msg=userlastlogon10
+
+    - name: Find user last logon time
+      ansible.windows.win_powershell:
+        script: |
+          Get-ADUser -Filter {Name -eq "admin"} -Properties * | Select-Object Name, @{N='LastLogon'; E={[DateTime]::FromFileTime($_.LastLogon)}}
+      register: userlastlogon10
+
+    - debug: msg=userlastlogon10
