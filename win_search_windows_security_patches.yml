@@ -9,3 +9,8 @@
       category_names: SecurityUpdates
       state: searched
       log_path: C:\ansible_wu.txt
+    register: update_count
+
+  - name: List all updates
+    debug:
+      var: update_count
