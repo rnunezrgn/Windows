@@ -18,7 +18,7 @@
           Get-UserLastLogon
       register: userlastlogon
 
-    - debug: msg="{{ userlastlogon.stdout }}"
+    - debug: msg=userlastlogon.stdout
 
     - name: Get-LocalUsers NOT logged on in 10 days
       ansible.windows.win_powershell:
@@ -26,4 +26,4 @@
           Get-LocalUser | Where-Object {$_.Lastlogon -ge (Get-Date).AddDays(-10)} | Select-Object Name,Enabled,SID,Lastlogon | Format-List
       register: userlastlogon10
 
-    - debug: msg="{{ userlastlogon10.stdout }}"
+    - debug: msg=userlastlogon10.stdout
