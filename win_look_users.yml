@@ -1,8 +1,8 @@
 ---
 - hosts: all 
   tasks:
-   - name: Get disk facts
-     win_command: net user admin /domain| findstr "Last"
+   - name: Display list of all user accounts for local computer
+     win_command: net user
      register: usage
 
    - debug: msg="{{ usage.stdout }}"
