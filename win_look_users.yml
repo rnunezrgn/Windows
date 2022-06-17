@@ -3,6 +3,12 @@
   tasks:
    - name: Display list of all user accounts for local computer
      win_command: net user
-     register: usage
+     register: result
 
-   - debug: msg="{{ usage.stdout }}"
+   - debug: msg="{{ result.stdout }}"
+
+   - name: Set a variable
+     ansible.builtin.set_fact:
+       myvar: "{{ result.stdout | to_json(ensure_ascii=False) }}"
+
+  - debug: msg="{{ myvar }}"
