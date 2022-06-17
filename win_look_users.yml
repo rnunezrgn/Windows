@@ -11,4 +11,4 @@
      ansible.builtin.set_fact:
        myvar: "{{ result.stdout | to_json(ensure_ascii=False) }}"
 
-  - debug: msg="{{ myvar }}"
+   - debug: msg="{{ myvar }}"
