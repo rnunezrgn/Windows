@@ -11,3 +11,4 @@
       community.windows.win_psmodule:
         name: PowerShellModule
         state: latest
+        accept_license: true
