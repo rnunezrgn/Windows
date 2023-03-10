@@ -5,7 +5,8 @@
   
   tasks:
     - name: Installing Nuget first
-      ansible.windows.win_shell: Install-PackageProvider -Name Nuget -Force
+#      ansible.windows.win_shell: Install-PackageProvider -Name Nuget -Force
+      ansible.windows.win_shell: Find-PackageProvider -Name Nuget -ForceBootstrap -IncludeDependencies -Force
 
     - name: Installing/Updating an existing PowerShell module to the newest version
       community.windows.win_psmodule:
