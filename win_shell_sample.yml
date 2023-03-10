@@ -7,7 +7,7 @@
   
   tasks:
     - name: Start/Stop Servers in SCCM Collection
-      win_powershell: |
+      ansible.windows.win_powershell: |
         $Job = 1..5 | ForEach-Object -Parallel { "Hello $_"; sleep 1; } -ThrottleLimit 5 -AsJob
         $job | Wait-Job | Receive-Job
       delegate_to: "{{ delegated_host }}"
