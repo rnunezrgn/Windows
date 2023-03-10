@@ -1,6 +1,6 @@
 ---
 - name: PowerShell 7 test
-  hosts: localhost
+  hosts: all
   gather_facts: true
   vars:
     delegated_host: ''
