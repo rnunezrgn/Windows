@@ -1,0 +1,10 @@
+---
+- name: Install or update Powershell
+  hosts: all
+  gather_facts: false
+  
+  tasks:
+    - name: Installing/Updating an existing PowerShell module to the newest version
+      community.windows.win_psmodule:
+        name: PowerShellModule
+        state: latest
