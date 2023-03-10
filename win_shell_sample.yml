@@ -1,15 +1,16 @@
 ---
 - name: PowerShell 7 test
-  hosts: all
+  hosts: localhost
   gather_facts: true
   vars:
     delegated_host: ''
   
   tasks:
     - name: Start/Stop Servers in SCCM Collection
-      ansible.windows.win_powershell: |
-        $Job = 1..5 | ForEach-Object -Parallel { "Hello $_"; sleep 1; } -ThrottleLimit 5 -AsJob
-        $job | Wait-Job | Receive-Job
+      ansible.windows.win_powershell: 
+        script: |
+          $Job = 1..5 | ForEach-Object -Parallel { "Hello $_"; sleep 1; } -ThrottleLimit 5 -AsJob
+          $job | Wait-Job | Receive-Job
       delegate_to: "{{ delegated_host }}"
       args:
         executable: pwsh
